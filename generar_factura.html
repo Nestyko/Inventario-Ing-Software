@@ -13,9 +13,96 @@
   </head>
   <body>
     <div class="container">
-      <h1>Hello, world!</h1>
+    <div class="col-xs-12">
+          <div class="card bar radius">
+      <h1>Generar Factura</h1>
+      <p>&nbsp;</p>
+      <table width="83%" align="center" class="table table-bordered">
+      <form id="data">
+	      	<tr>
+	          	<td ROWSPAN="3"><p>&nbsp;</p>
+	          	  <p>&nbsp;</p>
+	          	  <p>Seleccione Cliente:
+	          	  </p>
+	          	  <p>
+	          	    <input type="text" class="form-control" id="nombre" maxlength="0.5" size="0.5"/>
+          	      </p>
+	          	  <p>&nbsp;</p>
+	          	<p align="center"><button type="submit" class="btn btn-card center aqua-blue">Agregar</button></p>
+	          	</td>
+	         </tr>
+
+	      	 <tr>
+	      		<TH COLSPAN="6"><p>&nbsp;</p>
+	      		  <p>&nbsp;</p>
+	      		  <p>Buscar Producto	      		  </p>
+	      		  <p>
+	      		    <input type="text" class="form-control" id="nombre" maxlength="15" size="32"/>
+      		      </p>
+	      		  <p align="center">&nbsp;</p>
+	      		  <p align="center">
+	      		    <button type="submit" class="btn btn-card center aqua-blue">Agregar</button>
+      		      </p>
+                  
+   		       </TH>
+                <TH COLSPAN="6">
+	      		<fieldset>
+	      		  <p>&nbsp;</p>
+	      		  <p>&nbsp;</p>
+	      		  <div class="form-group">
+               	    <div class="radio">
+                	    <label>
+                	      <input type="radio" name="option" id="cantidad-option" value="ced" checked>
+                	      Cantidad </label>
+              	    </div>
+                	  <input type="number" class="form-control" id="cantidad">
+                	  <br>
+           		  </div>
+               </fieldset>
+      		   </TH>
+	         </tr>
+
+	         <tr>
+					          	<th ROWSPAN="2">Descripcion
+								<input type="text" class="form-control" id="nombre" maxlength="4" size="4"/>
+					          	</th>
+					          	<th ROWSPAN="2">Precio Unitario
+								<input type="text" class="form-control" id="nombre" maxlength="2" size="2"/>
+					          	</th>
+					          	<th ROWSPAN="2">Descuento
+								<input type="text" class="form-control" id="nombre" maxlength="2" size="2"/>
+					          	</th>
+					          	<th ROWSPAN="2">Iva
+								<input type="text" class="form-control" id="nombre" maxlength="2" size="2"/>
+					          	</th>
+					          	<th ROWSPAN="2">Total
+								<input type="text" class="form-control" id="nombre" maxlength="2" size="2"/>
+					          	</th>
+
+	         </tr>
+
+	
+	        
+			
+    </form>
+      </table>
+   
+       		<div class="panel panel-default" >
+				  <!-- Default panel contents -->
+			  <div class="panel-heading" align="center">Resumen</div>
+				  <div class="panel-body">
+				  </div>
+				  <!-- List group -->
+				  <ul class="list-group">
+				    <li class="list-group-item">TOTAL DESCUENTO</li>
+				    <li class="list-group-item">TOTAL IVA</li>
+				    <li class="list-group-item">TOTAL A PAGAR</li>
+				  </ul>
+				</div>
+      </div>
     </div>
-    
+    </div>
+
 
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
