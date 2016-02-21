@@ -18,4 +18,8 @@ urlpatterns = [
         r'^producto/registrar/$', 
         login_required(TemplateView.as_view(template_name="registrar_producto.html")), 
         name='registrar_producto'),
+    url(
+        r'^cliente/registrar/$', 
+        login_required(TemplateView.as_view(template_name="registrar_cliente.html")), 
+        name='registrar_cliente'),
 ]
