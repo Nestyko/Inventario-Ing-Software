@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ <html lang="es">
   <head>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
@@ -11,12 +11,12 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/cards.css">
   <title>Consulta Factura</title></head>
-  <body>
+<body>
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
           <div class="card bar radius">
-            <h1>Consulta Factura</h1>
+            <h1>Generar Reporte</h1>
             <br>
             <br>
             <form>
@@ -24,36 +24,35 @@
                 <div class="form-group">
                   <div class="radio"> 
                     <label>  
-                    <input type="radio" name="option" id="codigo-option" value="fecha" checked>Fecha
+                    <input type="radio" name="option" id="codigo-option" value="diario" checked>Diario
                     </label>
                   </div>
-                  <input type="number" class="form-control" id="fecha"></input>
-                  <br>
                 </div>
               </fieldset>
               <fieldset>
                 <div class="form-group">
                   <div class="radio">
                     <label>
-                    <input type="radio" name="option" id="nombre-option" value="cliente">
-                    Cliente</label>
+                    <input type="radio" name="option" id="nombre-option" value="mensual">
+                    Mensual</label>
                   </div>
-                  
-                  <input type="text" class="form-control disabled" id="cliente" ></input>
                 </div>
               </fieldset>
-              <button type="submit" class="btn btn-card center aqua-blue">Consulta</button>
+              <fieldset>
+                <div class="form-group">
+                  <div class="radio">
+                    <label>
+                    <input type="radio" name="option" id="nombre-option" value="anual">
+                    Anual</label>
+                  </div>
+                </div>
+              </fieldset>			  
+              <button type="submit" class="btn btn-card center aqua-blue">Generar</button>
             </form>
           </div>
         </div>
       </div>
     </div>
-    
 
-    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- jQuery first, then Bootstrap JS. MAX CDN
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>-->
-  </body>
+</body>
 </html>
