@@ -8,7 +8,9 @@ from inventario_app.models import Producto
 from django.http import Http404
 
 class ProductoList(APIView):
-
+    """
+    Genera una lista de los productos, tambien recibe get requests para filtrar por nombre o codigo.
+    """
     def get(self, request, format=None):
         
         data = request.GET

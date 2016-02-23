@@ -29,7 +29,7 @@ function refresh_table(productos){
             row = $('<tr></tr>');
             tbody.append(row);
             row.append('<td>' + producto.codigo + '</td>');
-            row.append('<td>' + producto.nombre + '</td>');
+            row.append('<td> <a href=\"{% url \"producto_detail\" ' + producto.codigo + '%}\">' + producto.nombre + '</a></td>');
             row.append('<td>' + producto.precio_venta + '</td>');
         }
     }else{
@@ -58,7 +58,7 @@ var main = function(){
         }
         console.log(data_aux);
         $.ajax({
-            url: 'http://localhost:8000/api/productos',
+            url: domain_url + '/api/productos',
             data: data_aux,
             success: function(response){
                 refresh_table(response);

@@ -23,4 +23,8 @@ urlpatterns = [
         login_required(TemplateView.as_view(template_name="registrar_cliente.html")), 
         name='registrar_cliente'),
     url(r'^logout/$', log_out , name="logout"),
+    url(
+        r'^factura/generar/$', 
+        login_required(TemplateView.as_view(template_name="generar_factura.html")), 
+        name='generar_factura'),
 ]
