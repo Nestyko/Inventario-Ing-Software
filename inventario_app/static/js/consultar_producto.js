@@ -58,13 +58,13 @@ var main = function(){
         }
         console.log(data_aux);
         $.ajax({
-            url: domain_url + '/api/productos',
+            url: domain_url + '/api/productos/',
             data: data_aux,
             success: function(response){
                 refresh_table(response);
             },
             error: function(response){
-                console.log(reponse);
+                console.log(response);
             }
             });
     });

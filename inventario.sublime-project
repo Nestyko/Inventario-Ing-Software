@@ -3,6 +3,9 @@
 	[
 		{
 			"path": "."
+		},
+		{
+			"path": "/home/nestyko/Downloads/Inventario-Ing-Software-master/inventario/inventario_app/templates"
 		}
 	]
 }
