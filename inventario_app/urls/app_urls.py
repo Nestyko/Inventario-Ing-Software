@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^login/$', User_login.as_view(), name='login'),
     url(
         r'^$', 
-        login_required(TemplateView.as_view(template_name="index.html")), 
+        index_view, 
         name='index'),
     url(
         r'^producto/consultar/$', 
@@ -40,7 +40,9 @@ urlpatterns = [
         login_required(TemplateView.as_view(template_name="registrar_cliente.html")), 
         name='registrar_usuario'),
     url(
-        r'^reporte/generar$', 
+        r'^reporte/generar/$', 
         login_required(TemplateView.as_view(template_name="generar_reporte.html")), 
         name='generar_reporte'),
+    url(
+        r'^empleado/registrar/$', Registrar_Empleado.as_view(), name='registrar_empleado'),
 ]

@@ -6,6 +6,10 @@ from inventario_app.serializers import ProductoSerializer
 from inventario_app.models import Producto
 
 from django.http import Http404
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
+
+
 
 class ProductoList(APIView):
     """

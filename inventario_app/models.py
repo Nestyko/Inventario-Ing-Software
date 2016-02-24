@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Producto(models.Model):
@@ -14,3 +15,14 @@ class Producto(models.Model):
 
     def __str__(self):
         return '[' + str(self.codigo) + '] - ' + self.nombre + ': ' + str(self.precio_venta) + ' Bs'
+
+class Cliente(User):
+    cedula = models.PositiveIntegerField(primary_key=True)
+    telefono = models.CharField(max_length=15)
+
+    def __str__(self):
+        return first_name + ': ' + cedula 
+
+class Factura(models.Model):
+    productos = models.ManyToManyField('Producto')
+    cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE)

@@ -158,7 +158,45 @@
           </div>
         </div>
       </div>
-          
+
+      {%if administrador%}
+      <div class="col-sm-3 col-xs-12">
+      <div class="flip-container">
+        <div class="flipper">
+          <div class="front">
+            <div class="panel panel-default text-center">
+        <div class="panel-heading">
+          <h3>Herramientas</h3>
+        </div>
+        <div class="panel-body text-center"><br><br>
+      <span class="glyphicon glyphicon-wrench logo"></span>
+        </div>
+        <div class="panel-footer">
+          <button class="btn-card btn-lg teal-green btn-for-flipping">Ver</button>
+        </div>
+      </div>      
+          </div>
+            <div class="back">
+              <div class="panel panel-default ">
+                <div class="panel-heading text-center">
+                  <h3>Herramientas</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                    <li><a href="/admin">Panel de Herramientas</a></li>
+                    <li><a href="{% url 'registrar_empleado' %}">Registrar Empleado</a></li>
+                    
+                  </ul>
+                </div>
+                <div class="panel-footer text-center">
+                  <button class="btn-card btn-lg teal-green btn-for-flipping">Volver</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endif%}
       
     </div>
 
