@@ -27,4 +27,20 @@ urlpatterns = [
         r'^factura/generar/$', 
         login_required(TemplateView.as_view(template_name="generar_factura.html")), 
         name='generar_factura'),
+    url(
+        r'^factura/consultar/$', 
+        login_required(TemplateView.as_view(template_name="consultar_factura.html")), 
+        name='consultar_factura'),
+    url(
+        r'^cliente/consultar$', 
+        login_required(TemplateView.as_view(template_name="consultar_cliente.html")), 
+        name='consultar_cliente'),
+    url(
+        r'^cliente/registrar/$', 
+        login_required(TemplateView.as_view(template_name="registrar_cliente.html")), 
+        name='registrar_usuario'),
+    url(
+        r'^reporte/generar$', 
+        login_required(TemplateView.as_view(template_name="generar_reporte.html")), 
+        name='generar_reporte'),
 ]

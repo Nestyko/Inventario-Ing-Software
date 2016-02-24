@@ -1,18 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
- <html lang="es">
-  <head>
-    <!-- Required meta tags always come first -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+{% extends 'base.html' %}
+{%load staticfiles%}
 
-    <!--Bootstrap CSS MAX CDN
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">-->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/cards.css">
-  <title>Consulta Factura</title></head>
-<body>
-    <div class="container">
+{%block title%}Generar Reporte{%endblock%}
+
+{% block content %}
       <div class="row">
         <div class="col-xs-12">
           <div class="card bar radius">
@@ -52,7 +43,5 @@
           </div>
         </div>
       </div>
-    </div>
-
-</body>
-</html>
+	  
+{%endblock%}

@@ -1,16 +1,11 @@
-{% extends 'base.html' %} <!-- Hereda todo lo que este en base.html (debe ir al principio) -->
+{% extends 'base.html' %}
+{%load staticfiles%}
 
-{%load staticfiles%} <!-- permite utilizar los archivos staticos (js, css, img) -->
+{%block title%}Generar Factura{%endblock%}
 
-{%block title%}Generar Factura{%endblock%} <!-- Bloque de titulo -->
-
-{%block content%} <!-- Aqui va todo el contenido -->
-
-<!-- Scripts específicos para este html -->
-<!-- no olvidar usar {% static 'direccion_del_archivo' %}-->
-<script type="text/javascript" src="{% static 'js/generar_factura.js' %}"></script>
-
-<div class="row">
+{% block content %}
+ 
+    <div class="row">
     <div class="col-xs-12">
           <div class="card bar radius">
       <h1>Generar Factura</h1>
@@ -18,87 +13,85 @@
       <div class="table-responsive">
       <table align="center" class="table table-bordered">
       <form id="data">
-            <tr>
-                <td ROWSPAN="2" colspan="2"><p>&nbsp;</p>
-                  <p>&nbsp;</p>
-                  <p>Cedula del Cliente:
-                  </p>
-                  <p>
-                    <input type="text" class="form-control" id="nombre"/>
-                  </p>
-                  <p>&nbsp;</p>
-                <p align="center"><button type="button" class="btn btn-card center aqua-blue">Agregar</button></p>
-                </td>
-             </tr>
+	      	<tr>
+	          	<td ROWSPAN="2" colspan="2"><p>&nbsp;</p>
+	          	  <p>&nbsp;</p>
+	          	  <p>Cedula del Cliente:
+	          	  </p>
+	          	  <p>
+	          	    <input type="text" class="form-control" id="nombre"/>
+          	      </p>
+	          	  <p>&nbsp;</p>
+	          	<p align="center"><button type="submit" class="btn btn-card center aqua-blue">Agregar</button></p>
+	          	</td>
+	         </tr>
 
-             <tr>
-                <TH colspan="2"><p>&nbsp;</p>
-                  <p>&nbsp;</p>
-                  <p>Buscar Producto                  </p>
-                  <p>
-                    <input type="text" class="form-control" id="codigo-producto" maxlength="15" size="32"/>
-                  </p>
-                  <p align="center">&nbsp;</p>
-                  <p align="center">
-                    <button id="buscar-producto-btn" class="btn btn-card center aqua-blue">Buscar</button>
-                  </p>
+	      	 <tr>
+	      		<TH colspan="2"><p>&nbsp;</p>
+	      		  <p>&nbsp;</p>
+	      		  <p>Buscar Producto	      		  </p>
+	      		  <p>
+	      		    <input type="text" class="form-control" id="nombre" maxlength="15" size="32"/>
+      		      </p>
+	      		  <p align="center">&nbsp;</p>
+	      		  <p align="center">
+	      		    <button type="submit" class="btn btn-card center aqua-blue">Agregar</button>
+      		      </p>
                   
-               </TH>
+   		       </TH>
                 <TH>
-                <fieldset>
-                  <p>&nbsp;</p>
-                  <p>&nbsp;</p>
-                  <div class="form-group">
-                    <div class="radio">
-                        <label for="cantidad">
-                          Cantidad </label>
-                    </div>
-                      <input type="number" min=1 class="form-control" id="cantidad">
-                      <br>
-                  </div>
+	      		<fieldset>
+	      		  <p>&nbsp;</p>
+	      		  <p>&nbsp;</p>
+	      		  <div class="form-group">
+               	    <div class="radio">
+                	    <label for="cantidad">
+                	      Cantidad </label>
+              	    </div>
+                	  <input type="number" class="form-control" id="cantidad">
+                	  <br>
+           		  </div>
                </fieldset>
-               </TH>
-             </tr>
+      		   </TH>
+	         </tr>
 
-             <tr>
-                                <td>Descripcion
-                                <input type="text" class="form-control" id="descripcion" maxlength="4"/>
-                                </td>
-                                <td>Precio Unitario
-                                <input type="text" class="form-control" id="precio_unitario" maxlength="2"/>
-                                </td>
-                                <td>Descuento
-                                <input type="text" class="form-control" id="descuento" maxlength="2"/>
-                                </td>
-                                <td>Iva
-                                <input type="text" class="form-control" id="iva" maxlength="2"/>
-                                </td>
-                                <td>Total
-                                <input type="text" class="form-control" id="total" maxlengtd="2"/>
-                                </td>
+	         <tr>
+					<td>Descripcion
+						<input type="text" class="form-control" id="nombre" maxlength="4"/>
+					</td>
+					<td>Precio Unitario
+						<input type="text" class="form-control" id="nombre" maxlength="2"/>
+					</td>
+					<td>Descuento
+						<input type="text" class="form-control" id="nombre" maxlength="2"/>
+					</td>
+					<td>Iva
+						<input type="text" class="form-control" id="nombre" maxlength="2"/>
+					</td>
+					<td>Total
+						<input type="text" class="form-control" id="nombre" maxlengtd="2"/>
+					</td>
 
-             </tr>
-
-    
-            
-            
+	         </tr>      
+			
     </form>
       </table>
       </div>
    
-            <div class="panel panel-default" >
-                  <!-- Default panel contents -->
-              <div class="panel-heading" align="center">Resumen</div>
-                  <div class="panel-body">
-                  </div>
-                  <!-- List group -->
-                  <ul class="list-group">
-                    <li class="list-group-item">TOTAL DESCUENTO</li>
-                    <li class="list-group-item">TOTAL IVA</li>
-                    <li class="list-group-item">TOTAL A PAGAR</li>
-                  </ul>
-                </div>
+       		<div class="panel panel-default" >
+				  <!-- Default panel contents -->
+			  <div class="panel-heading" align="center">Resumen</div>
+				  <div class="panel-body">
+				  </div>
+				  <!-- List group -->
+				  <ul class="list-group">
+				    <li class="list-group-item">TOTAL DESCUENTO</li>
+				    <li class="list-group-item">TOTAL IVA</li>
+				    <li class="list-group-item">TOTAL A PAGAR</li>
+				  </ul>
+				</div>
       </div>
     </div>
     </div>
+	
 {%endblock%}

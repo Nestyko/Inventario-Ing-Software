@@ -1,5 +1,5 @@
-{% extends 'base.html' %} <!-- Hereda todo lo quw esta en base.html -->
-{%load staticfiles%} <!-- Pone disponible lo que este en la carpeta static -->
+{% extends 'base.html' %}
+{%load staticfiles%}
 
 
 {% block content %}
@@ -73,8 +73,8 @@
                 </div>
                 <div class="panel-body">
                   <ul>
-                    <li><a href="consultar_cliente.html">Consulta</a></li>
-                    <li><a href="registrar_usuario.html">Registrar Cliente</a></li>
+                    <li><a href="{% url 'consultar_cliente' %}">Consulta</a></li>
+                    <li><a href="{% url 'registrar_usuario' %}">Registrar Cliente</a></li>
                   </ul>
                 </div>
                 <div class="panel-footer text-center">
@@ -109,7 +109,7 @@
                 </div>
                 <div class="panel-body">
                   <ul>
-                    <li><a href="consultar_factura.html">Consulta</a></li>
+                    <li><a href="{% url 'consultar_factura' %}">Consulta</a></li>
                     <li><a href="{% url 'generar_factura' %}">Generar Factura</a></li>
                   </ul>
                 </div>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="panel-body">
                   <ul>
-                    <li><a href="generar_reporte.html">Generar</a></li>
+                    <li><a href="{% url 'generar_reporte' %}">Generar</a></li>
                     
                   </ul>
                 </div>
@@ -158,23 +158,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-3 col-xs-12">
-        <div class="panel panel-default text-center">
-              <div class="panel-heading">
-                <h3>Herramientas</h3>
-              </div>
-              <div class="panel-body"><br><br>
-                <span class="glyphicon glyphicon-wrench logo"></span>
-              </div>
-              <div class="panel-footer text-center">
-                <a href="/admin" class="btn-card btn-lg teal-green btn-for-flipping">Entrar</a>
-              </div>
-            </div>
-      </div>
-
-
-
-
+          
       
     </div>
 
