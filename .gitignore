@@ -69,3 +69,5 @@ target/
 .python-version
 
 venv/
+inventario/staticfiles/
+*.sublime-workspace

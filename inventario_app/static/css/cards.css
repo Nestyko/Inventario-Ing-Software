@@ -1,0 +1,95 @@
+.debug{
+	border: 2px solid red;
+}
+
+
+.center-card{
+	display: block;
+	width: 24em;
+	margin: 0 auto;
+	background: #f0f0f0;
+	text-align: center;
+	padding: 3em;
+	padding-top: 1.5em;
+	margin-top: 10%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.card{
+	display: block;
+	padding: 2.5em;
+	padding-top: 1.5em;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	background: #f0f0f0;
+}
+
+.card.radius{
+	-webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.card.bar{
+	width: 100%;
+	margin-top: 2em;
+	padding-right: 15%;
+	padding-right: 4em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.card.little{
+	width: 10em;
+}
+
+.card.center{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.center{
+	margin: auto;
+}
+
+.btn-card{
+	display: block;
+	margin: auto;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+
+	box-sizing: border-box;
+	border-radius: 6px;
+	text-align: center;
+	width: 5em;
+	height: 2.5em;
+	border: 0;
+	//transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	transition-duration: 0.3s;
+}
+
+.btn-card.teal-green{
+	background-color: #009999;
+	color: white;
+}
+
+.btn-card.aqua-blue{
+	background: #11aaaa;
+	color: white;
+	opacity: 1;
+}
+
+.btn-card.warning{
+	background: #dd1111;
+	color: white;
+	opacity: 1;
+}
+
+.btn-card:hover {
+	//opacity: 0.8;
+    box-shadow: 0 8px 17px 0 #898989;
+    transition-duration: 0.3s;
+    background-color: white;
+    color: #009999;
+}
+
