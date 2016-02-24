@@ -4,60 +4,85 @@
 {%block title%}Registrar Cliente{%endblock%}
 
 {%block content%}
-    <h1 align="center">Registrar Usuario</h1>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <table align="center" class="table table-bordered">
-	<form id="data">
-    	<tr>
-        	<td>Nombre:</td>
-        	<td><input type="text" class="form-control" id="nombre" maxlength="30" size="32"/></td>
-        </tr>
-        <tr>
-        	<td>Apellido:</td>
-            <td><input type="text" class="form-control" id="apellido" maxlength="25" size="30"/></td>  
-        </tr>  
-        <tr>
-        	<td>Nombre de usuario:</td>
-        	<td><input type="text" class="form-control" id="nombre" maxlength="30" size="32"/></td>
-        </tr>    
-    	<tr>
-        	<td>Contraseña:</td>
-        	<td><input type="password" class="form-control" id="clave" size="20"/></td>
-        </tr>
-		<tr>
-        	<td>Confirmar Contraseña:</td>
-            <td><input type="password" class="form-control" id="cclave" size="20"/></td> 	
-        </tr>
-        <tr>
-        	<td>Teléfono:</td>
-            <td><input type="tel" class="form-control" id="telefono" size="14" maxlength="12" placeholder="Ej: 04xx-xxxxxxx"/></td>
-        </tr>
-        <tr>
-        	<td>Fecha de Naacimiento</td>
-            <td><input type="date" class="form-control" name="cumpleanios" step="1" min="1950-01-01" max="2013-12-31" value="2013-01-01">
-</td>
-        </tr>
-        <tr>
-        	<td>Email:</td>
-        	<td><input type="email" class="form-control" id="email" size="35" required placeholder="Escriba su email aqui!!"></td>
-        </tr>
-        <tr>
-        	<td>Sexo:</td>
-            <td>
-            	<select id="Sexo">
-                 <option id="Masculino" value="Masculino">Masculino</option>
-                 <option id="Femenino" value="Femenino">Femenino</option>	
-              </select>
-            </td>
-        </tr>
-        
-       
-       <tr><td colspan="2" class="text-center"><input  type="reset" class="btn-card teal-green" id="enviar" value="Registar" /></td></tr>
-  	
-    </form>
-</table>
+	<form id="registrationForm" method="post" class="form-horizontal mitad" action="#">
+      
+    
+        <table align="center" class="table table-bordered">
+        <h1>Registrar Usuario</h1>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Nombres</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control" name="nombre" />
+            </div>
+          </div>
+ 
+           <div class="form-group">
+            <label class="col-lg-3 control-label">Apellidos</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control" name="apellido" />
+            </div>
+          </div>
+ 
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Correo Electrónico</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control" name="email" />
+            </div>
+         </div>
+ 
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Password</label>
+            <div class="col-lg-3">
+              <input type="password" class="form-control" name="password" />
+            </div>
+          </div>
+ 
+          <div class="form-group">
+    <label class="col-lg-3 control-label">Fecha de Nacimiento</label>
+    <div class="col-lg-3">
+        <input type="text" class="form-control" name="datetimepicker" id="datetimepicker" data-date-format="YYYY-MM-DD" />
+     </div>
+      </div>
+ 
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Sexo</label>
+            <div class="col-lg-9">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="sexo" value="M" /> Masculino
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="sexo" value="F" /> Femenino
+                </label>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Teléfono</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control" name="telefono" />
+            </div>
+          </div>
+ 
+          <div class="form-group">
+           <label class="col-lg-3 control-label">Teléfono Celular</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control" name="telefono_cel" />
+            </div>
+         </div> 
+ 
+       <div class="form-group">
+            <div class="col-lg-9 col-lg-offset-3">
+              <button type="submit" class="btn btn-success left">Registrarse</button>
+            </div>
+          </div>
+          </table>
+        </form>
+
+    <script type="text/javascript" src="{% static 'js/validator.js' %}"></script>
 
 {%endblock%}
 
