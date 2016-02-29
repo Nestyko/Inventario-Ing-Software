@@ -1,4 +1,4 @@
-var domain_url = 'https://inventario-generico.herokuapp.com'
+var domain_url = 'http://inventario-generico.herokuapp.com'
 
 //var domain_url = 'http://localhost:8000'
 
