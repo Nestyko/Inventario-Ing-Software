@@ -20,7 +20,7 @@ urlpatterns = [
         name='registrar_producto'),
     url(
         r'^cliente/registrar/$', 
-        login_required(TemplateView.as_view(template_name="registrar_cliente.html")), 
+        RegistrarCliente.as_view(), 
         name='registrar_cliente'),
     url(r'^logout/$', log_out , name="logout"),
     url(

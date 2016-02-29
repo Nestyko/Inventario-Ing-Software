@@ -37,7 +37,9 @@
                 <div class="panel-body">
                   <ul>
                     <li><a href="{% url 'consultar_producto' %}">Consulta</a></li>
+                    {% if perms.inventario_app.add_producto%}
                     <li><a href="{% url 'registrar_producto' %}">Registrar</a></li>
+                    {%endif%}
                   </ul>
                 </div>
                 <div class="panel-footer text-center">
@@ -50,6 +52,8 @@
       </div>
 
 
+{% if perms.inventario_app.add_cliente%}
+<!-- Panel de Cliente -->
     <div class="col-sm-3 col-xs-12">
       <div class="flip-container">
         <div class="flipper">
@@ -84,8 +88,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div><!-- Final de Cliente -->
+{%endif%}
 
+{%if perms.inventario_app.add_factura %}
+<!-- Panel de Factura -->
     <div class="col-sm-3 col-xs-12">
       <div class="flip-container">
         <div class="flipper">
@@ -120,8 +127,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div><!-- Final de Factura -->
+{%endif%}
 
+{%if perms.inventario_app.auth %}
+<!-- Panel de reporte -->
     <div class="col-sm-3 col-xs-12">
       <div class="flip-container">
         <div class="flipper">
@@ -157,9 +167,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div><!-- Final de reporte -->
+{%endif%}
 
-      {%if administrador%}
+
+      {%if perms.inventario_app.auth or request.user.empleado%}
       <div class="col-sm-3 col-xs-12">
       <div class="flip-container">
         <div class="flipper">
@@ -184,7 +196,10 @@
                 <div class="panel-body">
                   <ul>
                     <li><a href="/admin">Panel de Herramientas</a></li>
-                    <li><a href="{% url 'registrar_empleado' %}">Registrar Empleado</a></li>
+                    {%if perms.inventario_app.auth%}
+                    <li><a href="{% url 'registrar_empleado' %}">Registrar Empleado
+                    </a></li>
+                    {%endif%}
                     
                   </ul>
                 </div>

@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View
 from django.views.decorators.csrf import csrf_protect
@@ -7,7 +6,9 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
 from inventario_app.forms import ProductoForm
+from inventario_app.models import Cliente, Empleado
 from django.contrib.auth.models import User, Group
+
 
 
 @login_required
@@ -70,18 +71,70 @@ class Registrar_Empleado(View):
     @method_decorator(csrf_protect)
     def post(self, request):
         print(request.POST)
+        if User.objects.filter(username=request.POST['username']).exists():
+            return render(
+                request, 
+                'registrar_empleado.html', 
+                {'error_message': 'No pudo ser registrado porque el usuario ya existe'})
         try:
-            username = request.POST['username']
-            password = request.POST['password']
-            group  = request.POST['group']
+            user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
+            user.first_name = request.POST['first_name']
+            user.last_name = request.POST['last_name']
+            group = Group.objects.get(name=request.POST['cargo'])
+            user.groups.add(group)
+            user.is_staff = True
+            user.save()
+            empleado = Empleado.objects.create(
+                user=user, 
+                cedula=request.POST['cedula'],
+                telefono=request.POST['telefono'],
+                sexo=request.POST['sexo'],
+                cargo=request.POST['cargo']
+                )
         except Exception as e:
             print(e)
-            return render(request, 'registrar_empleado.html', {'error_message': 'Error en los datos ingresados'})
+            try: 
+                user.remove()
+            except Exception as e2:
+                print(e2)
+            return render(
+                request, 
+                'registrar_empleado.html', 
+                {'error_message': 'Error en los datos ingresados'})
+        return render(request, 
+            'registrar_empleado.html', 
+            {'message': 'Usuario Registrado Satisfactoriamete'})
 
-        if User.objects.filter(username=username).exists():
-            return render(request, 'registrar_empleado.html', {'error_message': 'No pudo ser registrado porque el usuario ya existe'})
-        else:
-            user = User.objects.create_user(username, '', password)
-            group = Group.objects.get(name=group)
+class RegistrarCliente(View):
+
+    def get(self, request):
+        return render(request, 'registrar_cliente.html')
+
+    def post(self, request):
+        print(request.POST)
+        try:
+            user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
+            user.first_name = request.POST['first_name']
+            user.last_name = request.POST['last_name']
+            group = Group.objects.get(name='Cliente')
             user.groups.add(group)
-            return render(request, 'registrar_empleado.html', {'error_message': 'Usuario Registrado Satisfactoriamete'})
+            user.save()
+            cliente = Cliente.objects.create(
+                user=user, 
+                cedula=request.POST['cedula'],
+                telefono=request.POST['telefono'],
+                telefono_alternativo=request.POST['telefono_alternativo'],
+                sexo=request.POST['sexo'],
+                )
+            if cliente:
+                context = {
+                'message': 'Cliente registrado Satisfactoriamete'
+                }
+        except Exception as e:
+            print (e)
+            try:
+                user.remove()
+            except:
+                pass
+            context = {'message':'cliente no registrado', 'error_message' : 'Datos de usuraio invalidos'}
+        return render(request, 'registrar_cliente.html', context)

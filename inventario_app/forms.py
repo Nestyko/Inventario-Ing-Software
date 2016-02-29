@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from inventario_app.models import Producto
+from inventario_app.models import Producto, Cliente
 
 class ProductoForm(ModelForm):
     class Meta:
@@ -15,3 +15,8 @@ class ProductoForm(ModelForm):
         'stock_minimo',
         'stock_maximo',
         ]
+
+class ClienteForm(ModelForm):
+    class Meta:
+        model = Cliente
+        exclude = ['date_joined']

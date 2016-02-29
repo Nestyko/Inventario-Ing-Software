@@ -1,55 +1,84 @@
-{% extends 'base.html'%}
-{% load staticfiles %}
+{% extends 'base.html'%} <!-- Hereda todo lo que este en base.html
+es decir los importes de bootstrap, jquery, y librerias de js que utilicen
+todas las paginas -->
 
-{%block title%}Registrar Cliente{%endblock%}
+{% load staticfiles %} <!-- habilita utilizar los archivos static si hacen falta
+atravez del comando {%static 'direccion/al/archivo/statico.js' %} -->
 
-{%block content%}
-	<form id="registrationForm" method="post" class="form-horizontal mitad" action="#">
-      
+{%block title%}Registrar Cliente{%endblock%} <!-- bloque del titulo -->
+
+{%block content%} <!-- bloque en donde va todo el contenido html -->
+
+
+
+
+	<form id="registrationForm" method="post" class="form-horizontal mitad" action="{{request.path}}"> <!-- 
+    method="post" -> siempre que envien informacion nueva al servidor se usa este metodo
+    action="{{request.path}}" -> envia la informacion al pagina actual
+     -->
+
+      {% csrf_token %} <!-- Token de seguridad necesario en cada form -->
     
         <table align="center" class="table table-bordered">
         <h1>Registrar Usuario</h1>
+        <h3 class="col-xs-12 col-md-4 col-md-offset-4">{{message}}</h3>
+        <!-- message es una variable que viene del servidor, se nota debido a los
+        corchetes -->
+        <h3 class="col-xs-12 col-md-4 col-md-offset-4">{{error_message}}</h3>
           <div class="form-group">
-            <label class="col-lg-3 control-label">Nombres</label>
-            <div class="col-lg-3">
-              <input type="text" class="form-control" name="nombre" />
+            <label for="cedula" class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Cédula</label>
+              <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+                <input type="text" class="form-control" name="cedula" />
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Nombres</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="first_name" />
             </div>
           </div>
  
            <div class="form-group">
-            <label class="col-lg-3 control-label">Apellidos</label>
-            <div class="col-lg-3">
-              <input type="text" class="form-control" name="apellido" />
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Apellidos</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="last_name" />
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Nombre de Usuario</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="username" />
+            </div>
+         </div>
  
           <div class="form-group">
-            <label class="col-lg-3 control-label">Correo Electrónico</label>
-            <div class="col-lg-3">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Correo Electrónico</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
               <input type="text" class="form-control" name="email" />
             </div>
          </div>
  
           <div class="form-group">
-            <label class="col-lg-3 control-label">Password</label>
-            <div class="col-lg-3">
-              <input type="password" class="form-control" name="password" />
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Contraseña</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="password" id="password" class="form-control" name="password" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Repetir Contraseña</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="password" class="form-control" name="repeat_password" />
             </div>
           </div>
  
-          <div class="form-group">
-    <label class="col-lg-3 control-label">Fecha de Nacimiento</label>
-    <div class="col-lg-3">
-        <input type="text" class="form-control" name="datetimepicker" id="datetimepicker" data-date-format="YYYY-MM-DD" />
-     </div>
-      </div>
  
           <div class="form-group">
-            <label class="col-lg-3 control-label">Sexo</label>
-            <div class="col-lg-9">
+            <label class="col-md-4 col-md-offset-1 col-xs-12 co-xs-offset-0 control-label">Sexo</label>
+            <div class="col-md-1">
               <div class="radio">
                 <label>
-                  <input type="radio" name="sexo" value="M" /> Masculino
+                  <input type="radio" name="sexo" value="M" selected/> Masculino
                 </label>
               </div>
               <div class="radio">
@@ -61,28 +90,34 @@
           </div>
  
           <div class="form-group">
-            <label class="col-lg-3 control-label">Teléfono</label>
-            <div class="col-lg-3">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Teléfono</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
               <input type="text" class="form-control" name="telefono" />
             </div>
           </div>
  
           <div class="form-group">
-           <label class="col-lg-3 control-label">Teléfono Celular</label>
-            <div class="col-lg-3">
-              <input type="text" class="form-control" name="telefono_cel" />
+           <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Teléfono Alternativo</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="telefono_alternativo" />
             </div>
          </div> 
  
        <div class="form-group">
-            <div class="col-lg-9 col-lg-offset-3">
-              <button type="submit" class="btn btn-success left">Registrarse</button>
+            <div class="col-md-4 col-md-offset-5">
+              <button type="submit" class="btn btn-success center">Registrarse</button>
             </div>
           </div>
           </table>
         </form>
-
-    <script type="text/javascript" src="{% static 'js/validator.js' %}"></script>
+        
+<!--importar archivos desde la carpeta static 
+importante utilizar la etiqueta {% static 'direccion/al/archivo.js'%}
+tambien sirve para css {% static 'direccion/al/archivo.css'%}
+o para imagenes
+-->
+<script type="text/javascript" src="{% static 'js/cliente_form_validator.js' %}"></script>
+    
 
 {%endblock%}
 

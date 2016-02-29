@@ -1,44 +1,127 @@
-{%extends 'base.html'%}
-{%load staticfiles%}
+{% extends 'base.html'%} <!-- Hereda todo lo que este en base.html
+es decir los importes de bootstrap, jquery, y librerias de js que utilicen
+todas las paginas -->
 
-{%block title%}Registrar Empleado{%endblock%}
+{% load staticfiles %} <!-- habilita utilizar los archivos static si hacen falta
+atravez del comando {%static 'direccion/al/archivo/statico.js' %} -->
 
-{%block content%}
-<div class="row">
-  <div class="col-md-8 col-md-offset-2 col-xs-offset-0 col-xs-12">
-    <div class="card bar radius">
-    <form action="{{request.path}}" method="post">
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="username">
-          Usuario: 
-        </label>
-        <input type="text" name="username" class="form-control"></input>
-      </div>
-      <div class="form-group">
-        <label for="password">
-          Clave: 
-        </label>
-        <input type="password" name="password" class="form-control"></input>
-      </div>
-      <div class="form-group">
-        <label for="group">
-          Grupo: 
-        </label>
-        <select name='group' class="form-control">
-          <option value="Administrador">Administrador</option>
-          <option value="Empleado">Empleado</option>
-          <option value="Departamento de Recepción">Departamento de Recepción</option>
-        </select>
-      </div>
-      {%if error_message%}
-      <span class="warning">{{error_message}}</span>
-      {%endif%}
-      <button type="submit" class="btn-card btn-lg teal-green">Registrar</button>
-    </form>
-    </div>
-  </div>
-</div>
+{%block title%}Registrar Empleado{%endblock%} <!-- bloque del titulo -->
 
+{%block content%} <!-- bloque en donde va todo el contenido html -->
+
+<!--importar archivos desde la carpeta static 
+importante utilizar la etiqueta {% static 'direccion/al/archivo.js'%}
+tambien sirve para css {% static 'direccion/al/archivo.css'%}
+o para imagenes
+-->
+
+
+
+	<form id="registrationForm" method="post" class="form-horizontal mitad" action="{{request.path}}"> <!-- 
+    method="post" -> siempre que envien informacion nueva al servidor se usa este metodo
+    action="{{request.path}}" -> envia la informacion al pagina actual
+     -->
+
+      {% csrf_token %} <!-- Token de seguridad necesario en cada form -->
+    
+        <table align="center" class="table table-bordered">
+        <h1>Registrar Empleado</h1>
+        <h3 class="col-xs-12 col-md-4 col-md-offset-4">{{message}}</h3>
+        <!-- message es una variable que viene del servidor, se nota debido a los
+        corchetes -->
+        <h3 class="col-xs-12 col-md-4 col-md-offset-4">{{error_message}}</h3>
+          <div class="form-group">
+            <label for="cedula" class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Cédula</label>
+              <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+                <input type="text" class="form-control" name="cedula" />
+              </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Nombres</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="first_name" />
+            </div>
+          </div>
+ 
+           <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Apellidos</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="last_name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Nombre de Usuario</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="username" />
+            </div>
+         </div>
+ 
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Correo Electrónico</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="email" />
+            </div>
+         </div>
+ 
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Contraseña</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="password" id="password" class="form-control" name="password" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Repetir Contraseña</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="password" class="form-control" name="repeat_password" />
+            </div>
+          </div>
+ 
+ 
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-1 col-xs-12 co-xs-offset-0 control-label">Sexo</label>
+            <div class="col-md-1">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="sexo" value="M" selected/> Masculino
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="sexo" value="F" /> Femenino
+                </label>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="form-group">
+            <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Teléfono</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <input type="text" class="form-control" name="telefono" />
+            </div>
+          </div>
+ 
+          <div class="form-group">
+           <label class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0 control-label">Cargo</label>
+            <div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
+              <select class="form-control" name="cargo">
+                <option value="Administrador">Administrador</option>
+                <option value="Departamento de Recepcion">Departamento de Recepcion</option>
+                <option value="Empleado">Empleado</option>
+              </select>
+            </div>
+         </div> 
+ 
+       <div class="form-group">
+            <div class="col-md-4 col-md-offset-5">
+              <button type="submit" class="btn btn-success center">Registrarse</button>
+            </div>
+          </div>
+          </table>
+        </form>
+        
+<script type="text/javascript" src="{% static 'js/empleado_form_validator.js' %}"></script>
+    
 
 {%endblock%}
+
