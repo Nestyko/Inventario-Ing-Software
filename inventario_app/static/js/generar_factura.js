@@ -1,4 +1,6 @@
 
+
+
 function calcular_total(){
     cantidad = $('#cantidad').val();
     precio = $('#precio_unitario').val();
@@ -25,8 +27,9 @@ function update_table(producto){
 
 
 var main = function(){
+    
     var producto_btn = $('#buscar-producto-btn');
-    alert('revisar generar_factura.js para ver tareas por hacer');
+    //alert('revisar generar_factura.js para ver tareas por hacer');
     producto_btn.click(function(event){
         event.preventDefault();
         codigo = $('#codigo-producto').val();

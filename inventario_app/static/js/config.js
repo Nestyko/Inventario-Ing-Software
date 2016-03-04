@@ -1,6 +1,6 @@
-var domain_url = 'http://inventario-generico.herokuapp.com'
+//var domain_url = 'http://inventario-generico.herokuapp.com'
 
-//var domain_url = 'http://localhost:8000'
+var domain_url = 'http://localhost:8000'
 
 //configurar cookies
 function getCookie(name) {

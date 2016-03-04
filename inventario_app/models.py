@@ -38,7 +38,10 @@ class Empleado(models.Model):
             ('Empleado', 'Empleado'),
             ('Administrador', 'Administrador'),
             ))
+    def __str__(self):
+        return self.user.first_name + ': ' + str(self.cedula) 
 
 class Factura(models.Model):
     productos = models.ManyToManyField('Producto')
     cliente = models.ForeignKey('Cliente', on_delete=models.CASCADE)
+    creada = models.DateTimeField(auto_now_add=True)
