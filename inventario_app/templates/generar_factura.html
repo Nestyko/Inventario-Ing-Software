@@ -5,97 +5,82 @@
 
 {% block content %}
  
-    <div class="row">
-    <div class="col-xs-12">
-          <div class="card bar radius">
-      <h1>Generar Factura</h1>
-      <p>&nbsp;</p>
-      <div class="table-responsive">
-      <table align="center" class="table table-bordered">
-      <form id="cliente">
-	      	<tr>
-	          	<td ROWSPAN="2" colspan="2"><p>&nbsp;</p>
-	          	  <div class="form-group">
-	          	  	<label for="cedula">Cedula</label>
-	          	  	<div class="col-md-4 col-md-offset-4 col-xs-12 co-xs-offset-0">
-                		<input type="text" class="form-control" name="cedula" />
-              		</div>
-	          	  </div>
-	          	    
-          	      </p>
-	          	  <p>&nbsp;</p>
-	          	<p align="center"><button type="submit" class="btn btn-card center aqua-blue">Agregar</button></p>
-	          	</td>
-	         </tr>
-	   </form>
-		<form id="productos">
-	      	 <tr>
-	      		<TH colspan="2"><p>&nbsp;</p>
-	      		  <p>&nbsp;</p>
-	      		  <p>Buscar Producto	      		  </p>
-	      		  <p>
-	      		    <input type="number" class="form-control" id="codigo-producto"/>
-      		      </p>
-	      		  <p align="center">&nbsp;</p>
-	      		  <p align="center">
-	      		    <button type="submit" id="buscar-producto-btn" class="btn btn-card center aqua-blue">Agregar</button>
-      		      </p>
-                  
-   		       </TH>
-                <TH>
-	      		<fieldset>
-	      		  <p>&nbsp;</p>
-	      		  <p>&nbsp;</p>
-	      		  <div class="form-group">
-               	    <div class="radio">
-                	    <label for="cantidad">
-                	      Cantidad </label>
-              	    </div>
-                	  <input type="number" class="form-control" id="cantidad">
-                	  <br>
-           		  </div>
-               </fieldset>
-      		   </TH>
-	         </tr>
+ 	<h1>Generar Factura</h1>
 
-	         <tr>
-					<td>Descripcion
-						<input type="text" class="form-control" id="nombre" maxlength="4"/>
-					</td>
-					<td>Precio Unitario
-						<input type="text" class="form-control" id="nombre" maxlength="2"/>
-					</td>
-					<td>Descuento
-						<input type="text" class="form-control" id="nombre" maxlength="2"/>
-					</td>
-					<td>Iva
-						<input type="text" class="form-control" id="nombre" maxlength="2"/>
-					</td>
-					<td>Total
-						<input type="text" class="form-control" id="nombre" maxlengtd="2"/>
-					</td>
+ 	<div class="row card">
+ 		<div class="col-md-6 col-xs-12">
+ 			<form id="cliente">
+ 				<div class="form-group">
+ 					<label for="cedula">Cedula</label>
+ 					<input type="number" class="form-control" name="cedula">
+ 				</div>
+ 			</form>
+ 		</div>
+ 		<div class="col-md-6 col-xs-12">
+ 			<h3>Nombre: <strong><span id="cliente-nombre"></span></strong></h3>
+ 			
+ 		</div>
+ 		
+ 	</div>
+ 	<div class="row card">
+ 		<form action="" id="productoForm">
+	 		<h2>Producto</h2>
+	 		<div class="row">
+		 		<div class="col-md-6 col-xs-12">
+		 			<div class="form-group">
+		                  <div class="radio"> 
+		                    <label>  
+		                    <input type="radio" name="option" id="codigo-option" value="ced" checked>Codigo
+		                    </label>
+		                  </div>
+		                  <input type="number" name="producto_codigo_input" class="form-control" id="codigo"></input>
+		                  <br>
+		             </div>
+		             
+		 		</div>
+		 		<div class="col-md-6 col-xs-12">
+		 			<div class="form-group">
+		                <div class="radio">
+		                	<label>
+		                    <input type="radio" name="option" id="nombre-option" value="nom">
+		                    Nombre</label>
+		                  	</div>
+		                  
+		                  	<input type="text" class="form-control disabled" name="producto_nombre_input" ></input>
+		           	</div>
+		 		</div>
+	 		</div>
+	 		<div class="row">
+	 			<button type="submit" id="buscar-producto-btn" class="btn btn-card teal-green">Buscar</button>
+	 		</div>
 
-	         </tr>      
-			
-    </form>
-      </table>
-      </div>
-   
-       		<div class="panel panel-default" >
-				  <!-- Default panel contents -->
-			  <div class="panel-heading" align="center">Resumen</div>
-				  <div class="panel-body">
-				  </div>
-				  <!-- List group -->
-				  <ul class="list-group">
-				    <li class="list-group-item">TOTAL DESCUENTO</li>
-				    <li class="list-group-item">TOTAL IVA</li>
-				    <li class="list-group-item">TOTAL A PAGAR</li>
-				  </ul>
-				</div>
-      </div>
-    </div>
-    </div>
+ 		</form>
+ 	</div>
+
+ 	<div class="row card">
+ 		<div class="col-xs-12">
+ 			<div class="row">
+			  <div class="col-xs-12">
+			    <table class="table table-hover">
+			      <thead>
+			        <tr>
+			          <th>Codigo</th>
+			          <th>Nombre</th>
+			          <th>Precio</th>
+			          <th>Cantidad</th>
+			          <th></th>
+			        </tr>
+			      </thead>
+			      <tbody id="table-body">
+			        
+			      </tbody>
+			    </table>
+			  </div>
+			</div>
+ 		</div>
+ 		
+ 	</div>
+    
     <script src="{%static 'js/generar_factura_validator.js' %}"></script>
 	<script src="{%static 'js/generar_factura.js' %}"></script>
 

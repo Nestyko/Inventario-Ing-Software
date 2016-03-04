@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from inventario_app.serializers import ProductoSerializer
-from inventario_app.models import Producto
+from inventario_app.serializers import ProductoSerializer, ClienteSerializer
+from inventario_app.models import Producto, Cliente
 
 from django.http import Http404
 from django.utils.decorators import method_decorator
@@ -51,7 +51,7 @@ class ProductoDetail(APIView):
     def get(self, request, pk, format=None):
         producto = self.get_object(pk)
         serializer = ProductoSerializer(producto)
-        return Response(serialzier.data)
+        return Response(serializer.data)
 
     def put(self, request, pk, format=None):
         producto = self.get_object(pk)
@@ -65,3 +65,17 @@ class ProductoDetail(APIView):
         producto = self.get_object(pk)
         producto.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class ClienteDetail(APIView):
+
+    def get_object(self, pk):
+        try:
+            return Cliente.objects.get(pk=pk)
+        except Cliente.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        cliente = self.get_object(pk)
+        serializer = ClienteSerializer(cliente)
+        return Response(serializer.data)
